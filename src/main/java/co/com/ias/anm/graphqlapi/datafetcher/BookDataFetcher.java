@@ -3,6 +3,7 @@ package co.com.ias.anm.graphqlapi.datafetcher;
 import co.com.ias.anm.graphqlapi.services.BookServices;
 import graphql.schema.DataFetcher;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -29,8 +30,17 @@ public class BookDataFetcher {
     public DataFetcher getBookPageCount() {
         return environment -> {
             Map<String, String> book = environment.getSource();
+            HttpServletRequest request = environment.getContext();
             String pageCountStr = book.get("pageCount");
             return Integer.parseInt(pageCountStr);
         };
     }
-}
+
+    public DataFetcher saveBook() {
+        return environment -> {
+            System.out.println("Saving ...");
+            Map<String, Object> bookInputMap = environment.getArgument("book");
+            return bookServices.saveBook(bookInputMap);
+        };
+    }
+ }

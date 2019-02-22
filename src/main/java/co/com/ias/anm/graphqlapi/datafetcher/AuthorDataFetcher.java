@@ -18,6 +18,8 @@ public class AuthorDataFetcher {
 
     public DataFetcher getAuthorByBookDataFetcher() {
         return dataFetchingEnvironment -> {
+            Object t = dataFetchingEnvironment.getContext();
+            System.out.println(t);
             Map<String,String> book = dataFetchingEnvironment.getSource();
             String authorId = book.get("authorId");
             return authorServices.getAuthorById(authorId);

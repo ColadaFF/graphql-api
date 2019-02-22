@@ -31,6 +31,7 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.1.2.RELEASE'
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
-
+    // https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools
+    compile 'com.graphql-java-kickstart:graphql-java-tools:5.4.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
